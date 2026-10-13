@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentify - Rental Kendaraan</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #171717;
+            color: white;
+        }
+
+        header {
+            background: #222;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            color: #d4ff36;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+        }
+
+        nav a:hover {
+            color: #d4ff36;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px 85px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #d4ff36;
+        }
+
+        .hero p {
+            color: #bbb;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 24px;
+            background: #d4ff36;
+            color: #171717;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #b8e622;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 0 20px 60px;
+        }
+
+        .feature {
+            background: #252525;
+            border: 1px solid #383838;
+            padding: 25px;
+            border-radius: 14px;
+            width: 260px;
+        }
+
+        .feature h2 {
+            color: #d4ff36;
+            font-size: 21px;
+        }
+
+        .feature p {
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #222;
+            padding: 24px;
+            text-align: center;
+            color: #aaa;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px;
+            }
+
+            nav a {
+                margin-left: 10px;
+            }
+
+            .hero {
+                padding-top: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Rentify.</div>
+
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="kendaraan">Kendaraan</a>
+            <a href="test-koneksi">Database</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>
+                Temukan Kendaraan<br>
+                <span>Untuk Perjalananmu.</span>
+            </h1>
+
+            <p>
+                Sewa mobil dan motor dengan mudah melalui Rentify.
+                Pilih kendaraan yang sesuai dengan kebutuhanmu.
+            </p>
+
+            <a class="btn" href="kendaraan">Lihat Kendaraan</a>
+        </section>
+
+        <section class="features">
+            <article class="feature">
+                <h2>Rental Mobil</h2>
+                <p>
+                    Temukan mobil untuk perjalanan keluarga,
+                    liburan, atau kebutuhan sehari-hari.
+                </p>
+            </article>
+
+            <article class="feature">
+                <h2>Rental Motor</h2>
+                <p>
+                    Pilih motor praktis untuk aktivitas harian
+                    dan perjalanan jarak dekat.
+                </p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Rentify. Rental kendaraan lebih mudah.
+    </footer>
+</body>
+</html>
