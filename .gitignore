@@ -1,0 +1,19 @@
+# Hasil build dan distribusi
+/build/
+/dist/
+
+# File hasil kompilasi Java
+*.class
+
+# Log dan file sementara
+*.log
+*.tmp
+*.swp
+*~
+
+# File pribadi NetBeans
+/nbproject/private/
+
+# File sistem operasi
+.DS_Store
+Thumbs.db
