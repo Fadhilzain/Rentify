@@ -9,173 +9,758 @@
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --blue: #2874cf;
+            --light-blue: #dceff2;
+            --gray: #64748b;
+            --border: #d9d9d9;
         }
 
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #171717;
-            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #111;
+            background: #fff;
+            min-height: 100vh;
         }
 
-        header {
-            background: #222;
-            padding: 22px 8%;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input, select {
+            font-family: inherit;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            width: 100%;
+            height: 76px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            padding: 0 8%;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,.12);
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
-            color: #d4ff36;
-            font-size: 26px;
-            font-weight: bold;
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: -1px;
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 22px;
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 36px;
         }
 
-        nav a:hover {
-            color: #d4ff36;
+        .nav-menu a {
+            font-size: 16px;
         }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--blue);
+        }
+
+        /* KONTEN UTAMA */
+
+        main {
+            max-width: 1120px;
+            width: 90%;
+            margin: 24px auto 0;
+        }
+
+        /* HERO BANNER */
 
         .hero {
-            text-align: center;
-            padding: 100px 20px 85px;
-        }
-
-        .hero h1 {
-            font-size: clamp(32px, 5vw, 48px);
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #d4ff36;
-        }
-
-        .hero p {
-            color: #bbb;
-            line-height: 1.8;
-            max-width: 650px;
-            margin: 0 auto 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 24px;
-            background: #d4ff36;
-            color: #171717;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            background: #b8e622;
-        }
-
-        .features {
+            height: 230px;
+            background: var(--light-blue);
+            border-radius: 7px;
+            position: relative;
+            overflow: hidden;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 0 20px 60px;
+            align-items: center;
+            padding: 28px 40px;
         }
 
-        .feature {
-            background: #252525;
-            border: 1px solid #383838;
-            padding: 25px;
-            border-radius: 14px;
-            width: 260px;
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            width: 49%;
         }
 
-        .feature h2 {
-            color: #d4ff36;
-            font-size: 21px;
+        .hero-content h1 {
+            font-size: 30px;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 10px;
         }
 
-        .feature p {
-            color: #bbb;
+        .hero-content h1 span {
+            color: var(--blue);
+        }
+
+        .hero-content p {
+            font-size: 14px;
             line-height: 1.6;
+            color: #333;
+            max-width: 390px;
+            margin-bottom: 14px;
         }
+
+        .btn-primary {
+            min-height: 38px;
+            padding: 0 23px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--blue);
+            color: #fff;
+            border: 1px solid var(--blue);
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover,
+        .search-button:hover {
+            background: #205ba8;
+        }
+
+        /* GAMBAR HERO
+           Orang di sebelah kiri, mobil di sebelah kanan.
+           Kedua gambar diatur secara independen agar tidak menempel.
+        */
+
+        .hero-images {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .hero-orang {
+            position: absolute;
+            left: 53%;
+            bottom: 0;
+            width: 23%;
+            height: 94%;
+            object-fit: contain;
+            object-position: center bottom;
+            z-index: 2;
+        }
+
+        .hero-mobil {
+            position: absolute;
+            right: 1%;
+            bottom: 0;
+            width: 30%;
+            height: 88%;
+            object-fit: contain;
+            object-position: center bottom;
+            z-index: 1;
+        }
+
+        /* PENCARIAN */
+
+        .search-box {
+            position: relative;
+            z-index: 4;
+            width: calc(100% - 36px);
+            margin: -11px auto 0;
+            padding: 16px 20px 18px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+        }
+
+        .search-box h2 {
+            font-size: 18px;
+            margin-bottom: 13px;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1.08fr;
+            gap: 10px;
+        }
+
+        .search-field {
+            min-width: 0;
+            height: 49px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 12px;
+            border: 1px solid #4380ff;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .search-field img {
+            width: 23px;
+            height: 23px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .field-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .field-content label {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .field-content input,
+        .field-content select {
+            width: 100%;
+            min-width: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: var(--gray);
+            font-size: 11px;
+        }
+
+        .search-button {
+            height: 49px;
+            background: var(--blue);
+            color: #fff;
+            border: 1px solid var(--blue);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* JUDUL BAGIAN */
+
+        .section {
+            margin-top: 18px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 12px 2px;
+        }
+
+        /* KATEGORI */
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 0 2px;
+        }
+
+        .category-card {
+            min-height: 80px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: var(--light-blue);
+            border-radius: 16px;
+            transition: transform .2s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .category-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category-info h3 {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .category-info p {
+            font-size: 11px;
+            color: #526780;
+            line-height: 1.5;
+        }
+
+        .category-arrow {
+            font-size: 23px;
+        }
+
+        /* KARTU REKOMENDASI */
+
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            padding: 0 2px;
+        }
+
+        .vehicle-card {
+            overflow: hidden;
+            border: 1px solid #4480ff;
+            border-radius: 22px;
+            background: #fff;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(40,116,207,.12);
+        }
+
+        .vehicle-image {
+            height: 87px;
+            background: #f0f1f3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 10px;
+        }
+
+        .vehicle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .vehicle-info {
+            padding: 8px 10px 9px;
+        }
+
+        .vehicle-info h3 {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .vehicle-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .vehicle-tag {
+            display: inline-block;
+            padding: 2px 7px;
+            background: #dcecff;
+            color: #2868b3;
+            border-radius: 10px;
+            font-size: 8px;
+        }
+
+        .vehicle-price {
+            font-size: 11px;
+        }
+
+        .vehicle-price span {
+            color: var(--gray);
+        }
+
+        /* FOOTER */
 
         footer {
-            background: #222;
-            padding: 24px;
+            padding: 42px 15px 20px;
             text-align: center;
-            color: #aaa;
+            font-size: 10px;
+            color: #46658a;
         }
 
-        @media (max-width: 600px) {
-            header {
-                padding: 20px;
+        /* TABLET */
+
+        @media (max-width: 850px) {
+            .navbar {
+                padding: 0 5%;
             }
 
-            nav a {
-                margin-left: 10px;
+            .nav-menu {
+                gap: 18px;
+            }
+
+            main {
+                width: 94%;
             }
 
             .hero {
-                padding-top: 70px;
+                padding-left: 25px;
+            }
+
+            .hero-content {
+                width: 52%;
+            }
+
+            .hero-content h1 {
+                font-size: 25px;
+            }
+
+            .hero-orang {
+                left: 51%;
+                width: 25%;
+            }
+
+            .hero-mobil {
+                right: 1%;
+                width: 31%;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .vehicle-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* HP */
+
+        @media (max-width: 520px) {
+            .navbar {
+                height: auto;
+                min-height: 70px;
+                padding: 14px 5%;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .logo {
+                font-size: 26px;
+            }
+
+            .nav-menu {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .nav-menu a {
+                font-size: 13px;
+            }
+
+            main {
+                margin-top: 16px;
+            }
+
+            .hero {
+                height: 330px;
+                align-items: flex-start;
+                padding: 25px 20px;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 25px;
+            }
+
+            .hero-content p {
+                max-width: 270px;
+            }
+
+            .hero-orang {
+                left: 34%;
+                bottom: 0;
+                width: 32%;
+                height: 52%;
+            }
+
+            .hero-mobil {
+                right: 0;
+                bottom: 0;
+                width: 40%;
+                height: 48%;
+            }
+
+            .search-box {
+                width: 96%;
+                padding: 15px;
+                margin-top: -8px;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .vehicle-grid {
+                gap: 10px;
+            }
+
+            .vehicle-image {
+                height: 75px;
+            }
+
+            .vehicle-info {
+                padding: 8px;
+            }
+
+            .vehicle-info h3 {
+                font-size: 11px;
             }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="logo">Rentify.</div>
 
-        <nav>
-            <a href="index.html">Beranda</a>
-            <a href="kendaraan">Kendaraan</a>
-            <a href="test-koneksi">Database</a>
+    <header class="navbar">
+        <a href="index.html" class="logo">Rentify</a>
+
+        <nav class="nav-menu">
+            <a href="index.html" class="active">Beranda</a>
+            <a href="#pesanan">Pesanan</a>
+            <a href="#kategori">Katalog</a>
+            <a href="#profile">Profile</a>
         </nav>
     </header>
 
     <main>
+
         <section class="hero">
-            <h1>
-                Temukan Kendaraan<br>
-                <span>Untuk Perjalananmu.</span>
-            </h1>
+            <div class="hero-content">
+                <h1>
+                    Sewa Kendaraan<br>
+                    Jadi <span>Lebih Mudah</span>
+                </h1>
 
-            <p>
-                Sewa mobil dan motor dengan mudah melalui Rentify.
-                Pilih kendaraan yang sesuai dengan kebutuhanmu.
-            </p>
+                <p>
+                    Temukan mobil dan motor sesuai dengan kebutuhanmu
+                    dengan proses cepat dan terpercaya.
+                </p>
 
-            <a class="btn" href="kendaraan">Lihat Kendaraan</a>
+                <a href="#pencarian" class="btn-primary">
+                    Mulai Sewa <span>⟶</span>
+                </a>
+            </div>
+
+            <div class="hero-images">
+                <img
+                    src="images/hero-orang.png"
+                    alt="Orang sedang naik motor"
+                    class="hero-orang"
+                >
+
+                <img
+                    src="images/hero-mobil.png"
+                    alt="Mobil rental Rentify"
+                    class="hero-mobil"
+                >
+            </div>
         </section>
 
-        <section class="features">
-            <article class="feature">
-                <h2>Rental Mobil</h2>
-                <p>
-                    Temukan mobil untuk perjalanan keluarga,
-                    liburan, atau kebutuhan sehari-hari.
-                </p>
-            </article>
+        <section class="search-box" id="pencarian">
+            <h2>Cari Kendaraan</h2>
 
-            <article class="feature">
-                <h2>Rental Motor</h2>
-                <p>
-                    Pilih motor praktis untuk aktivitas harian
-                    dan perjalanan jarak dekat.
-                </p>
-            </article>
+            <form class="search-form"
+                  action="KendaraanServlet"
+                  method="get">
+
+                <div class="search-field">
+                    <img src="images/lokasi.png" alt="">
+
+                    <div class="field-content">
+                        <label for="lokasi">Lokasi</label>
+                        <select id="lokasi" name="lokasi">
+                            <option value="">Pilih lokasi</option>
+                            <option value="Bandung">Bandung</option>
+                            <option value="Jakarta">Jakarta</option>
+                            <option value="Yogyakarta">Yogyakarta</option>
+                            <option value="Surabaya">Surabaya</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="search-field">
+                    <img src="images/kalender.png" alt="">
+
+                    <div class="field-content">
+                        <label for="tanggal">Tanggal Sewa</label>
+                        <input type="date" id="tanggal" name="tanggal">
+                    </div>
+                </div>
+
+                <div class="search-field">
+                    <img src="images/mobil-jenisKendaraan.png" alt="">
+
+                    <div class="field-content">
+                        <label for="jenis">Jenis Kendaraan</label>
+                        <select id="jenis" name="jenis">
+                            <option value="">Semua jenis</option>
+                            <option value="Mobil">Mobil</option>
+                            <option value="Motor">Motor</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="search-button">
+                    ⌕ &nbsp; Cari kendaraan
+                </button>
+            </form>
         </section>
+
+        <section class="section" id="kategori">
+            <h2 class="section-title">Pilih Kategori</h2>
+
+            <div class="category-grid">
+                <a href="KendaraanServlet?jenis=Mobil"
+                   class="category-card">
+
+                    <img src="images/mobil-kategori.png"
+                         alt="Mobil"
+                         class="category-icon">
+
+                    <div class="category-info">
+                        <h3>Mobil</h3>
+                        <p>
+                            Berbagai pilihan mobil<br>
+                            untuk setiap kebutuhan
+                        </p>
+                    </div>
+
+                    <span class="category-arrow">›</span>
+                </a>
+
+                <a href="KendaraanServlet?jenis=Motor"
+                   class="category-card">
+
+                    <img src="images/vespa.png"
+                         alt="Motor"
+                         class="category-icon">
+
+                    <div class="category-info">
+                        <h3>Motor</h3>
+                        <p>
+                            Praktis, hemat, dan<br>
+                            siap menemani perjalananmu
+                        </p>
+                    </div>
+
+                    <span class="category-arrow">›</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section" id="rekomendasi">
+            <h2 class="section-title">Rekomendasi Kendaraan</h2>
+
+            <div class="vehicle-grid">
+
+                <article class="vehicle-card">
+                    <div class="vehicle-image">
+                        <img src="images/toyota-avanza.png"
+                             alt="Toyota Avanza">
+                    </div>
+
+                    <div class="vehicle-info">
+                        <h3>Toyota Avanza</h3>
+                        <div class="vehicle-tags">
+                            <span class="vehicle-tag">Mobil</span>
+                            <span class="vehicle-tag">Manual</span>
+                        </div>
+                        <p class="vehicle-price">
+                            Rp. 350.000 <span>/ hari</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="vehicle-card">
+                    <div class="vehicle-image">
+                        <img src="images/toyota-agya.png"
+                             alt="Toyota Agya">
+                    </div>
+
+                    <div class="vehicle-info">
+                        <h3>Toyota Agya</h3>
+                        <div class="vehicle-tags">
+                            <span class="vehicle-tag">Mobil</span>
+                            <span class="vehicle-tag">Automatic</span>
+                        </div>
+                        <p class="vehicle-price">
+                            Rp. 300.000 <span>/ hari</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="vehicle-card">
+                    <div class="vehicle-image">
+                        <img src="images/yamaha-nmax.png"
+                             alt="Yamaha Nmax">
+                    </div>
+
+                    <div class="vehicle-info">
+                        <h3>Yamaha Nmax</h3>
+                        <div class="vehicle-tags">
+                            <span class="vehicle-tag">Motor</span>
+                            <span class="vehicle-tag">Automatic</span>
+                        </div>
+                        <p class="vehicle-price">
+                            Rp. 80.000 <span>/ hari</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="vehicle-card">
+                    <div class="vehicle-image">
+                        <img src="images/honda-scoopy.png"
+                             alt="Honda Scoopy">
+                    </div>
+
+                    <div class="vehicle-info">
+                        <h3>Honda Scoopy</h3>
+                        <div class="vehicle-tags">
+                            <span class="vehicle-tag">Motor</span>
+                            <span class="vehicle-tag">Automatic</span>
+                        </div>
+                        <p class="vehicle-price">
+                            Rp. 50.000 <span>/ hari</span>
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
     </main>
 
     <footer>
-        &copy; 2026 Rentify. Rental kendaraan lebih mudah.
+        © 2026 Rentify. Rental kendaraan lebih mudah.
     </footer>
+
 </body>
 </html>
