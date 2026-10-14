@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2026 at 07:00 AM
+-- Generation Time: Oct 14, 2026 at 01:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -245,7 +245,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `phone`, `address`, `photo_path`, `bank_name`, `bank_account_number`, `bank_account_name`, `role`, `status`, `failed_login_count`, `locked_until`, `last_login_at`, `created_at`, `updated_at`) VALUES
-(1, 'Admin Rentify', 'admin@rentify.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi.', '081234567890', 'Bandung', NULL, NULL, NULL, NULL, 'admin', 'active', 0, NULL, NULL, '2026-10-12 08:19:41', '2026-10-12 08:19:41');
+(1, 'Admin Rentify', 'admin@rentify.com', 'admin123', '081234567890', 'Bandung', NULL, NULL, NULL, NULL, 'admin', 'active', 0, NULL, NULL, '2026-10-12 08:19:41', '2026-10-14 09:42:32'),
+(2, 'Fadhil Muhammad Zain', 'fadhil041205@gmail.com', 'pbkdf2_sha256$210000$jOowybvuhbfeBU2sgBXhmA==$LIGd1K8C90K3nCFBTlxA4oh99P2zMpAsQDvOMPyjZdg=', NULL, NULL, NULL, NULL, NULL, NULL, 'user', 'active', 0, NULL, NULL, '2026-10-14 09:55:32', '2026-10-14 09:55:32');
 
 --
 -- Indexes for dumped tables
@@ -389,7 +390,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
