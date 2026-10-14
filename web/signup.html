@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun Baru | Rentify</title>
+
+    <style>
+        /* ===== PENGATURAN DASAR ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #DCEFF2;
+            color: #000000;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            width: 100%;
+            height: 112px;
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6.75% 0 9.9%;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            color: #2B70C8;
+            font-size: 40px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 72px;
+        }
+
+        .nav-menu a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .nav-menu a:hover {
+            color: #2B70C8;
+        }
+
+        /* ===== AREA UTAMA ===== */
+        .main-content {
+            min-height: calc(100vh - 112px);
+            background-color: #DCEFF2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 54px 20px 56px;
+        }
+
+        /* ===== KARTU PENDAFTARAN ===== */
+        .signup-card {
+            width: 680px;
+            max-width: 100%;
+            min-height: 802px;
+            background-color: #FFFFFF;
+            border-radius: 30px;
+            padding: 43px 63px 40px;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.28);
+        }
+
+        /* ===== JUDUL DAN SUBJUDUL ===== */
+        .signup-header {
+            text-align: center;
+            margin-bottom: 58px;
+        }
+
+        .signup-header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .signup-header p {
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        /* ===== FORM INPUT ===== */
+        .form-group {
+            margin-bottom: 34px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 0 12px 5px;
+        }
+
+        .input-box {
+            width: 100%;
+            height: 74px;
+            border: 1px solid #3478FF;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 26px;
+            background-color: #FFFFFF;
+        }
+
+        .input-box:focus-within {
+            border-color: #2867C7;
+            box-shadow: 0 0 0 2px rgba(43, 112, 200, 0.10);
+        }
+
+        .input-box svg {
+            width: 29px;
+            height: 29px;
+            flex-shrink: 0;
+            stroke: #000000;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 20px;
+            color: #222222;
+        }
+
+        .input-box input::placeholder {
+            color: #D0D0D0;
+            opacity: 1;
+        }
+
+        /* ===== TOMBOL DAFTAR ===== */
+        .btn-signup {
+            display: block;
+            width: 75%;
+            height: 64px;
+            margin: 52px auto 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: #2B70C8;
+            color: #FFFFFF;
+            font-size: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-signup:hover {
+            background-color: #205BA8;
+        }
+
+        /* ===== TAUTAN LOGIN ===== */
+        .login-link {
+            text-align: center;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        .login-link a {
+            color: #2876D2;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== TABLET DAN LAPTOP KECIL ===== */
+        @media (max-width: 1000px) {
+            .navbar {
+                padding: 0 4%;
+            }
+
+            .logo {
+                font-size: 32px;
+            }
+
+            .nav-menu {
+                gap: 25px;
+            }
+
+            .nav-menu a {
+                font-size: 17px;
+            }
+
+            .signup-card {
+                width: 620px;
+            }
+        }
+
+        /* ===== TAMPILAN HP ===== */
+        @media (max-width: 600px) {
+            .navbar {
+                height: auto;
+                min-height: 76px;
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .logo {
+                font-size: 29px;
+            }
+
+            .nav-menu {
+                width: 100%;
+                gap: 0;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                font-size: 13px;
+            }
+
+            .main-content {
+                min-height: calc(100vh - 76px);
+                padding: 25px 14px;
+            }
+
+            .signup-card {
+                width: 100%;
+                min-height: auto;
+                padding: 32px 22px 38px;
+                border-radius: 22px;
+            }
+
+            .signup-header {
+                margin-bottom: 38px;
+            }
+
+            .signup-header h1 {
+                font-size: 27px;
+            }
+
+            .signup-header p {
+                font-size: 14px;
+            }
+
+            .form-group {
+                margin-bottom: 24px;
+            }
+
+            .form-group label {
+                font-size: 15px;
+                margin-bottom: 9px;
+            }
+
+            .input-box {
+                height: 55px;
+                padding: 0 14px;
+                gap: 12px;
+            }
+
+            .input-box svg {
+                width: 23px;
+                height: 23px;
+            }
+
+            .input-box input {
+                font-size: 14px;
+            }
+
+            .btn-signup {
+                width: 85%;
+                height: 52px;
+                margin-top: 35px;
+                font-size: 22px;
+            }
+
+            .login-link {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <a href="index.html" class="logo">Rentify</a>
+
+        <nav class="nav-menu">
+            <a href="index.html">Beranda</a>
+            <a href="#">Pesanan</a>
+            <a href="#">Katalog</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+    <!-- AREA PENDAFTARAN -->
+    <main class="main-content">
+
+        <section class="signup-card">
+
+            <div class="signup-header">
+                <h1>Daftar Akun Baru</h1>
+                <p>Mulai perjalanan anda bersama Rentify</p>
+            </div>
+
+            <form action="register" method="post">
+
+                <!-- NAMA LENGKAP -->
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+
+                    <div class="input-box">
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke-width="1.5"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+                            <circle cx="12" cy="7" r="4"></circle>
+                            <path d="M4 21v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2z"></path>
+                        </svg>
+
+                        <input
+                            type="text"
+                            id="nama"
+                            name="nama"
+                            placeholder="Masukkan Nama Lengkap"
+                            autocomplete="name"
+                            required>
+                    </div>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <div class="input-box">
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke-width="1.5"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+                            <rect x="2" y="4" width="20" height="16" rx="1"></rect>
+                            <path d="m3 5 9 8 9-8"></path>
+                        </svg>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Masukkan Email"
+                            autocomplete="email"
+                            required>
+                    </div>
+                </div>
+
+                <!-- KATA SANDI -->
+                <div class="form-group">
+                    <label for="password">Kata Sandi</label>
+
+                    <div class="input-box">
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke-width="1.8"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+                            <rect x="3" y="10" width="18" height="12" rx="2"></rect>
+                            <path d="M7 10V7a5 5 0 0 1 10 0v3"></path>
+                            <circle cx="12" cy="16" r="1"></circle>
+                        </svg>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Masukkan Kata Sandi"
+                            autocomplete="new-password"
+                            required>
+                    </div>
+                </div>
+
+                <!-- TOMBOL DAFTAR -->
+                <button type="submit" class="btn-signup">
+                    Daftar
+                </button>
+
+                <!-- LINK SIGN IN -->
+                <p class="login-link">
+                    Sudah punya akun?
+                    <a href="signin.html">Masuk di sini</a>
+                </p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

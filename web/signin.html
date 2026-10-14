@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Rentify</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #DCEFF2;
+            color: #000;
+        }
+
+        .navbar {
+            height: 112px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 9.9%;
+            box-shadow: 0 3px 5px #0003;
+        }
+
+        .logo {
+            color: #2B70C8;
+            font-size: 40px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .nav-menu a {
+            color: #000;
+            font-size: 24px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-menu a:hover {
+            color: #2B70C8;
+        }
+
+        .main-content {
+            min-height: calc(100vh - 112px);
+            background: #DCEFF2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 54px 20px;
+        }
+
+        .signin-card {
+            width: 680px;
+            max-width: 100%;
+            min-height: 650px;
+            background: #fff;
+            border-radius: 30px;
+            padding: 48px 63px;
+            box-shadow: 0 4px 4px #0004;
+        }
+
+        .signin-header {
+            text-align: center;
+            margin-bottom: 58px;
+        }
+
+        .signin-header h1 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .signin-header p {
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 34px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 0 12px 5px;
+        }
+
+        .input-box {
+            height: 74px;
+            width: 100%;
+            border: 1px solid #3478FF;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 26px;
+        }
+
+        .input-box:focus-within {
+            border-color: #2867C7;
+            box-shadow: 0 0 0 2px #2B70C81A;
+        }
+
+        .input-box svg {
+            width: 29px;
+            height: 29px;
+            flex-shrink: 0;
+            stroke: #000;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 20px;
+        }
+
+        .input-box input::placeholder {
+            color: #D0D0D0;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 35px;
+            color: #2876D2;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .btn-signin {
+            display: block;
+            width: 75%;
+            height: 64px;
+            margin: 0 auto 18px;
+            border: none;
+            border-radius: 10px;
+            background: #2B70C8;
+            color: #fff;
+            font-size: 28px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-signin:hover {
+            background: #205BA8;
+        }
+
+        .register-link {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .register-link a {
+            color: #2876D2;
+            text-decoration: none;
+        }
+
+        .error-message {
+            color: #D93025;
+            text-align: center;
+            font-size: 14px;
+            margin: -30px 0 25px;
+        }
+
+        @media (max-width: 1000px) {
+            .navbar {
+                padding: 0 4%;
+            }
+
+            .logo {
+                font-size: 32px;
+            }
+
+            .nav-menu {
+                gap: 24px;
+            }
+
+            .nav-menu a {
+                font-size: 17px;
+            }
+
+            .signin-card {
+                width: 620px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                height: auto;
+                min-height: 76px;
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .logo {
+                font-size: 29px;
+            }
+
+            .nav-menu {
+                width: 100%;
+                justify-content: space-between;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                font-size: 13px;
+            }
+
+            .main-content {
+                min-height: calc(100vh - 76px);
+                padding: 25px 14px;
+            }
+
+            .signin-card {
+                width: 100%;
+                min-height: auto;
+                padding: 32px 22px 38px;
+                border-radius: 22px;
+            }
+
+            .signin-header {
+                margin-bottom: 38px;
+            }
+
+            .signin-header h1 {
+                font-size: 28px;
+            }
+
+            .signin-header p {
+                font-size: 14px;
+            }
+
+            .form-group {
+                margin-bottom: 24px;
+            }
+
+            .form-group label {
+                font-size: 15px;
+                margin-bottom: 9px;
+            }
+
+            .input-box {
+                height: 55px;
+                padding: 0 14px;
+                gap: 12px;
+            }
+
+            .input-box svg {
+                width: 23px;
+                height: 23px;
+            }
+
+            .input-box input {
+                font-size: 14px;
+            }
+
+            .forgot-password {
+                font-size: 13px;
+                margin-bottom: 25px;
+            }
+
+            .btn-signin {
+                width: 85%;
+                height: 52px;
+                font-size: 22px;
+            }
+
+            .register-link {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Rentify</a>
+
+        <nav class="nav-menu">
+            <a href="index.html">Beranda</a>
+            <a href="#">Pesanan</a>
+            <a href="#">Katalog</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="signin-card">
+
+            <div class="signin-header">
+                <h1>Masuk ke Akun</h1>
+                <p>Selamat datang kembali di Rentify</p>
+            </div>
+
+            <p id="login-error" class="error-message"></p>
+
+            <form action="login" method="post">
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <div class="input-box">
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke-width="1.5"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="1"></rect>
+                            <path d="m3 5 9 8 9-8"></path>
+                        </svg>
+
+                        <input type="email"
+                               id="email"
+                               name="email"
+                               placeholder="Masukkan Email"
+                               autocomplete="email"
+                               required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Kata Sandi</label>
+
+                    <div class="input-box">
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke-width="1.8"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+                            <rect x="3" y="10" width="18" height="12" rx="2"></rect>
+                            <path d="M7 10V7a5 5 0 0 1 10 0v3"></path>
+                            <circle cx="12" cy="16" r="1"></circle>
+                        </svg>
+
+                        <input type="password"
+                               id="password"
+                               name="password"
+                               placeholder="Masukkan Kata Sandi"
+                               autocomplete="current-password"
+                               required>
+                    </div>
+                </div>
+
+                <a href="#" class="forgot-password">
+                    Lupa kata sandi?
+                </a>
+
+                <button type="submit" class="btn-signin">
+                    Masuk
+                </button>
+
+                <p class="register-link">
+                    Belum punya akun?
+                    <a href="signup.html">Daftar di sini</a>
+                </p>
+
+            </form>
+
+        </section>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const error = params.get("error");
+
+        const messages = {
+            empty: "Email dan kata sandi wajib diisi.",
+            invalid: "Email atau kata sandi salah.",
+            inactive: "Akun kamu tidak aktif.",
+            server: "Terjadi kesalahan. Silakan coba kembali."
+        };
+
+        if (messages[error]) {
+            document.getElementById("login-error").textContent =
+                messages[error];
+        }
+    </script>
+
+</body>
+</html>
